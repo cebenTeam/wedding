@@ -6,6 +6,16 @@ import { iconSprites } from '@/components/icon-sprites'
 
 const random = (min: number, max: number) => Math.random() * (max - min) + min
 
+type Particle = {
+  id: string
+  sprite: { src: string; width: number; height: number }
+  toX: number
+  toY: number
+  rotation: number
+  startX: number
+  startY: number
+}
+
 const sample = <T,>(array: T[]): T => {
   return array[Math.floor(Math.random() * array.length)]
 }
@@ -19,7 +29,7 @@ const generateParticles = (
   size: number,
   lastEdge: string | null,
 ) => {
-  const particles = []
+  const particles: Particle[] = []
 
   // 랜덤한 테두리 위치 선택 (이전과 다른 위치, bottom 제외)
   const edges = ['top', 'left', 'right'] as const
@@ -44,7 +54,7 @@ const generateParticles = (
       break
   }
 
-  for (let i of range(1, num)) {
+  for (const i of range(1, num)) {
     const sprite = sample(iconSprites)
 
     const angleMin = (i / num) * 360
@@ -74,25 +84,34 @@ const generateParticles = (
 }
 
 export const Couple = () => {
-  const [particles, setParticles] = useState<any[]>([])
+  const [particles, setParticles] = useState<Particle[]>([])
   const lastEdgeRef = useRef<string | null>(null)
   const baseUrl = import.meta.env.BASE_URL
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const { particles: newParticles, edge } = generateParticles(
-        6,
-        60,
-        lastEdgeRef.current,
-      )
-      setParticles((prev) => [...prev, ...newParticles])
+      const spawnBurst = () => {
+        const { particles: newParticles, edge } = generateParticles(
+          6,
+          60,
+          lastEdgeRef.current,
+        )
 
-      lastEdgeRef.current = edge
+        lastEdgeRef.current = edge
+        setParticles((prev) => [...prev, ...newParticles])
 
-      setTimeout(() => {
-        setParticles((current) => current.slice(6))
-      }, 1500)
-    }, 1400)
+        const idsToRemove = new Set(newParticles.map((p) => p.id))
+        setTimeout(() => {
+          setParticles((current) =>
+            current.filter((p) => !idsToRemove.has(p.id)),
+          )
+        }, 1500)
+      }
+
+      // 기존 1회 폭발 + 바로 이어서 다른 위치에서 1회 더
+      spawnBurst()
+      setTimeout(spawnBurst, 600)
+    }, 2000)
 
     return () => clearInterval(interval)
   }, [])
