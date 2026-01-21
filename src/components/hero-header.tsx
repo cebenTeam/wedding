@@ -11,7 +11,7 @@ export const HeroHeader = ({ baseUrl }: HeroHeaderProps) => {
       style={{ aspectRatio: '2 / 3' }}
     >
       <img
-        src={`${baseUrl}images/here01.jpg`}
+        src={`${baseUrl}images/here.jpg`}
         alt="장준혁과 현유진의 결혼식 메인 사진"
         width={2560}
         height={3840}

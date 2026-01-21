@@ -3,6 +3,7 @@ import { Map } from '@/components/map'
 import Account from '@/components/account'
 import { HeroHeader } from '@/components/hero-header'
 import { HeroArticle } from '@/components/hero-article'
+import { ImageGallery } from '@/components/image-gallery'
 
 const Page = () => {
   const baseUrl = import.meta.env.BASE_URL
@@ -12,6 +13,8 @@ const Page = () => {
       <HeroHeader baseUrl={baseUrl} />
 
       <HeroArticle />
+
+      <ImageGallery baseUrl={baseUrl} />
 
       <section
         className="pt-12 pb-12 px-4 max-[420px]:px-4"
