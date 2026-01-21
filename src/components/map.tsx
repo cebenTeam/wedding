@@ -83,7 +83,7 @@ export const Map = () => {
   }
 
   useEffect(() => {
-    const clientId = 'sqe6yam84f'
+    const clientId = import.meta.env.VITE_NAVER_MAP_CLIENT_ID
     if (!clientId) {
       console.warn(
         '[Map] VITE_NAVER_MAP_CLIENT_ID is missing. Set it in wedding/env.sample -> wedding/.env.local',
