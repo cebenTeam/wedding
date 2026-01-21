@@ -207,26 +207,33 @@ export const ImageGallery = ({ baseUrl, className }: ImageGalleryProps) => {
                     style={{ aspectRatio: '4 / 5' }}
                   >
                     {shouldRenderImage ? (
-                      <img
-                        src={img.src}
-                        alt={img.alt}
-                        width={1800}
-                        height={1125}
-                        className={cn(
-                          'absolute inset-0 w-full h-full object-cover select-none [-webkit-touch-callout:none] transition-opacity duration-300 will-change-opacity motion-reduce:transition-none',
-                          loadedBySrc[img.src] ? 'opacity-100' : 'opacity-0',
-                        )}
-                        loading={idx === activeIndex ? 'eager' : 'lazy'}
-                        decoding="async"
-                        onLoad={() => markLoaded(img.src)}
-                        onContextMenu={preventNativeImageMenu}
-                        onDragStart={preventNativeImageMenu}
-                        draggable={false}
-                        ref={(node) => {
-                          // If the image is already cached, `onLoad` may fire immediately; ensure we show it.
-                          if (node?.complete) markLoaded(img.src)
-                        }}
-                      />
+                      <>
+                        <img
+                          src={img.src}
+                          alt={img.alt}
+                          width={1800}
+                          height={1125}
+                          className="absolute inset-0 w-full h-full object-cover select-none [-webkit-touch-callout:none]"
+                          loading={idx === activeIndex ? 'eager' : 'lazy'}
+                          decoding="async"
+                          onLoad={() => markLoaded(img.src)}
+                          onContextMenu={preventNativeImageMenu}
+                          onDragStart={preventNativeImageMenu}
+                          draggable={false}
+                          ref={(node) => {
+                            // If the image is already cached, `onLoad` may fire immediately; ensure we show it.
+                            if (node?.complete) markLoaded(img.src)
+                          }}
+                        />
+                        {/* Fade out a cover once the image is loaded to avoid a "blink" */}
+                        <div
+                          className={cn(
+                            'pointer-events-none absolute inset-0 bg-black transition-opacity duration-300 will-change-opacity motion-reduce:transition-none',
+                            loadedBySrc[img.src] ? 'opacity-0' : 'opacity-100',
+                          )}
+                          aria-hidden="true"
+                        />
+                      </>
                     ) : (
                       <div
                         className="absolute inset-0 bg-black"

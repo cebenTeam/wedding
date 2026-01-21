@@ -14,8 +14,6 @@ const Page = () => {
 
       <HeroArticle />
 
-      <ImageGallery baseUrl={baseUrl} />
-
       <section
         className="pt-12 pb-12 px-4 max-[420px]:px-4"
         aria-labelledby="calendar-section"
@@ -25,6 +23,14 @@ const Page = () => {
         </h2>
         <Calendar0418 />
       </section>
+
+      <div className="flex items-center justify-center my-5 mb-8 gap-2">
+        <span className="h-px w-6 bg-foreground/30" />
+        <span className="text-[10px] text-foreground/40">✦</span>
+        <span className="h-px w-6 bg-foreground/30" />
+      </div>
+
+      <ImageGallery baseUrl={baseUrl} />
 
       <div className="flex items-center justify-center my-5 gap-2">
         <span className="h-px w-6 bg-foreground/30" />
