@@ -7,7 +7,7 @@ type HeroHeaderProps = {
 export const HeroHeader = ({ baseUrl }: HeroHeaderProps) => {
   return (
     <header
-      className="relative rounded-b-[28px] overflow-hidden bg-black"
+      className="relative overflow-hidden bg-black"
       style={{ aspectRatio: '2 / 3' }}
     >
       <img

@@ -11,7 +11,7 @@ import { useState } from 'react'
 
 const Account = () => {
   return (
-    <section className="px-8 py-10 text-center">
+    <section className="px-8 py-10 pb-40 text-center">
       <h3 className={`text-[17px] font-medium mb-4 ${serif.className}`}>
         마음 전하실 곳
       </h3>
@@ -40,21 +40,14 @@ const Account = () => {
             <AccountCard
               role="신랑"
               name="장준혁"
-              bank="국민은행"
-              account="123-456-789012"
-            />
-
-            <AccountCard
-              role="혼주 · 아버지"
-              name="장을균"
-              bank="농협"
-              account="301-1234-5678-91"
+              bank="기업은행"
+              account="56802768501018"
             />
             <AccountCard
               role="혼주 · 어머니"
               name="백다임"
               bank="농협"
-              account="301-9876-5432-10"
+              account="00000000000000"
             />
           </AccordionContent>
         </AccordionItem>
@@ -69,20 +62,19 @@ const Account = () => {
               role="신부"
               name="현유진"
               bank="신한은행"
-              account="110-123-456789"
+              account="110407217708"
             />
-
             <AccountCard
               role="혼주 · 아버지"
               name="현병윤"
               bank="우리은행"
-              account="1002-345-678901"
+              account="00000000000000"
             />
             <AccountCard
               role="혼주 · 어머니"
               name="임현미"
               bank="우리은행"
-              account="1002-987-654321"
+              account="00000000000000"
             />
           </AccordionContent>
         </AccordionItem>

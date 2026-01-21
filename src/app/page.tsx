@@ -42,7 +42,7 @@ const Page = () => {
         <span className="h-px w-6 bg-foreground/30" />
       </div>
 
-      <section className="" aria-labelledby="account-section">
+      <section aria-labelledby="account-section">
         <h2 id="account-section" className="sr-only">
           마음 전하실 곳
         </h2>
