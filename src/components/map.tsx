@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { inter, serif } from '@/app/fonts'
 
 const NAVER_MAP_SCRIPT_ID = 'naver-map-sdk'
+const NAVER_MAP_CLIENT_ID = 'sqe6yam84f'
 
 function loadNaverMapScript(clientId: string) {
   if (typeof window === 'undefined')
@@ -83,17 +84,9 @@ export const Map = () => {
   }
 
   useEffect(() => {
-    const clientId = import.meta.env.VITE_NAVER_MAP_CLIENT_ID
-    if (!clientId) {
-      console.warn(
-        '[Map] VITE_NAVER_MAP_CLIENT_ID is missing. Set it in wedding/env.sample -> wedding/.env.local',
-      )
-      return
-    }
-
     let cancelled = false
 
-    loadNaverMapScript(clientId)
+    loadNaverMapScript(NAVER_MAP_CLIENT_ID)
       .then(() => {
         if (cancelled) return
         setIsMapLoaded(true)
