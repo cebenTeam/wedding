@@ -154,7 +154,13 @@ const Page = () => {
         <Map />
       </section>
 
-      <section className="my-10" aria-labelledby="account-section">
+      <div className="flex items-center justify-center pt-10 gap-2">
+        <span className="h-px w-6 bg-foreground/30" />
+        <span className="text-[10px] text-foreground/40">✦</span>
+        <span className="h-px w-6 bg-foreground/30" />
+      </div>
+
+      <section className="" aria-labelledby="account-section">
         <h2 id="account-section" className="sr-only">
           마음 전하실 곳
         </h2>

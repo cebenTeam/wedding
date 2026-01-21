@@ -11,7 +11,7 @@ import { useState } from 'react'
 
 const Account = () => {
   return (
-    <section className="px-8 py-14 text-center">
+    <section className="px-8 py-10 text-center">
       <h2 className={`text-[17px] font-medium mb-4 ${serif.className}`}>
         마음 전하실 곳
       </h2>
@@ -160,4 +160,3 @@ const AccountCard = ({
 }
 
 export default Account
-
