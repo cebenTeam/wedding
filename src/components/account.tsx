@@ -12,9 +12,9 @@ import { useState } from 'react'
 const Account = () => {
   return (
     <section className="px-8 py-10 text-center">
-      <h2 className={`text-[17px] font-medium mb-4 ${serif.className}`}>
+      <h3 className={`text-[17px] font-medium mb-4 ${serif.className}`}>
         마음 전하실 곳
-      </h2>
+      </h3>
 
       <p className="text-sm text-foreground/70 leading-relaxed mb-10">
         참석이 어려우신 분들을 위해
@@ -149,8 +149,10 @@ const AccountCard = ({
 
         {/* 복사 버튼 */}
         <button
+          type="button"
           onClick={copy}
           className="ml-4 px-3 py-2 text-xs text-muted-foreground hover:text-foreground transition-colors underline underline-offset-4 decoration-dotted"
+          aria-label={`${role} ${name} 계좌번호 복사`}
         >
           {isCopied ? '복사됨' : '복사'}
         </button>

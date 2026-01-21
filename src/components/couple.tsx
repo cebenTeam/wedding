@@ -98,8 +98,11 @@ export const Couple = () => {
   }, [])
 
   return (
-    <div className="relative mx-auto w-[280px]">
-      <div className="absolute inset-0 z-20 pointer-events-none">
+    <div className="relative mx-auto w-[280px]" aria-hidden="true">
+      <div
+        className="absolute inset-0 z-20 pointer-events-none"
+        aria-hidden="true"
+      >
         <AnimatePresence>
           {particles.map((particle) => {
             return (

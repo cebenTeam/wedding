@@ -106,11 +106,11 @@ export const Map = () => {
   return (
     <>
       <div className={`mb-6 text-center ${inter.className}`}>
-        <h2
+        <h3
           className={`text-[18px] font-medium tracking-wide mb-2 ${serif.className}`}
         >
           아펠가모 선릉 4층 웨딩홀
-        </h2>
+        </h3>
 
         <div className="text-[13px] text-foreground/60 leading-relaxed mb-1">
           <address className="not-italic">
@@ -129,6 +129,8 @@ export const Map = () => {
       >
         <div
           ref={mapRef}
+          aria-label="아펠가모 선릉 지도"
+          aria-busy={!isMapLoaded}
           style={{
             width: '100%',
             height: '400px',
@@ -141,6 +143,7 @@ export const Map = () => {
           className={`absolute top-2 right-2 max-[420px]:right-2.5 shadow-2xl rounded-3xl bg-white cursor-pointer tracking-tight hover:bg-white pl-2 gap-1.5 pr-3`}
           onClick={() => window.open('https://naver.me/xHgpb86d', '_blank')}
           disabled={!isMapLoaded}
+          aria-label="네이버 지도에서 보기 (새 창)"
         >
           <div
             className="w-7 h-7 bg-cover bg-center rounded"
