@@ -19,42 +19,6 @@ export const ImageGallery = ({ baseUrl, className }: ImageGalleryProps) => {
   const images = React.useMemo(
     () => [
       {
-        src: `${baseUrl}images/gallery/gallery-02.jpg`,
-        alt: '웨딩 갤러리 이미지 2',
-      },
-      {
-        src: `${baseUrl}images/gallery/gallery-05.jpg`,
-        alt: '웨딩 갤러리 이미지 5',
-      },
-      {
-        src: `${baseUrl}images/gallery/gallery-09.jpg`,
-        alt: '웨딩 갤러리 이미지 9',
-      },
-      {
-        src: `${baseUrl}images/gallery/gallery-10.jpg`,
-        alt: '웨딩 갤러리 이미지 10',
-      },
-      {
-        src: `${baseUrl}images/gallery/gallery-11.jpg`,
-        alt: '웨딩 갤러리 이미지 11',
-      },
-      {
-        src: `${baseUrl}images/gallery/gallery-12.jpg`,
-        alt: '웨딩 갤러리 이미지 12',
-      },
-      {
-        src: `${baseUrl}images/gallery/gallery-13.jpg`,
-        alt: '웨딩 갤러리 이미지 13',
-      },
-      {
-        src: `${baseUrl}images/gallery/gallery-15.jpg`,
-        alt: '웨딩 갤러리 이미지 15',
-      },
-      {
-        src: `${baseUrl}images/gallery/gallery-17.jpg`,
-        alt: '웨딩 갤러리 이미지 17',
-      },
-      {
         src: `${baseUrl}images/gallery/gallery-20.jpg`,
         alt: '웨딩 갤러리 이미지 20',
       },
@@ -77,6 +41,42 @@ export const ImageGallery = ({ baseUrl, className }: ImageGalleryProps) => {
       {
         src: `${baseUrl}images/gallery/gallery-31.jpg`,
         alt: '웨딩 갤러리 이미지 31',
+      },
+      {
+        src: `${baseUrl}images/gallery/gallery-11.jpg`,
+        alt: '웨딩 갤러리 이미지 11',
+      },
+      {
+        src: `${baseUrl}images/gallery/gallery-12.jpg`,
+        alt: '웨딩 갤러리 이미지 12',
+      },
+      {
+        src: `${baseUrl}images/gallery/gallery-13.jpg`,
+        alt: '웨딩 갤러리 이미지 13',
+      },
+      {
+        src: `${baseUrl}images/gallery/gallery-15.jpg`,
+        alt: '웨딩 갤러리 이미지 15',
+      },
+      {
+        src: `${baseUrl}images/gallery/gallery-17.jpg`,
+        alt: '웨딩 갤러리 이미지 17',
+      },
+      {
+        src: `${baseUrl}images/gallery/gallery-02.jpg`,
+        alt: '웨딩 갤러리 이미지 2',
+      },
+      {
+        src: `${baseUrl}images/gallery/gallery-05.jpg`,
+        alt: '웨딩 갤러리 이미지 5',
+      },
+      {
+        src: `${baseUrl}images/gallery/gallery-09.jpg`,
+        alt: '웨딩 갤러리 이미지 9',
+      },
+      {
+        src: `${baseUrl}images/gallery/gallery-10.jpg`,
+        alt: '웨딩 갤러리 이미지 10',
       },
     ],
     [baseUrl],

@@ -46,8 +46,8 @@ const Account = () => {
             <AccountCard
               role="혼주 · 어머니"
               name="백다임"
-              bank="농협"
-              account="00000000000000"
+              bank="국민은행"
+              account="088210586485"
             />
           </AccordionContent>
         </AccordionItem>
