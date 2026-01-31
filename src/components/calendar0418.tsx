@@ -1,11 +1,26 @@
 'use client'
 
+import { useEffect, useRef } from 'react'
 import { inter } from '@/app/fonts'
 
 export const Calendar0418 = () => {
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => entry.isIntersecting && el.classList.add('visible'),
+      { threshold: 0.3, rootMargin: '0px 0px -80px 0px' },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <div
-      className="w-full rounded-lg bg-background max-w-[420px] mx-auto relative overflow-hidden select-none"
+      ref={ref}
+      className="fade-in-up w-full rounded-lg bg-background max-w-[420px] mx-auto relative overflow-hidden select-none"
       role="group"
       aria-label="2026년 4월 달력"
     >

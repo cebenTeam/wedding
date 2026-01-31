@@ -39,8 +39,20 @@ function loadNaverMapScript(clientId: string) {
 }
 
 export const Map = () => {
+  const containerRef = useRef<HTMLDivElement>(null)
   const mapRef = useRef<HTMLDivElement>(null)
   const [isMapLoaded, setIsMapLoaded] = useState(false)
+
+  useEffect(() => {
+    const el = containerRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => entry.isIntersecting && el.classList.add('visible'),
+      { threshold: 0.2, rootMargin: '0px 0px -80px 0px' },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
 
   const initMap = () => {
     if (!mapRef.current || !window.naver) return
@@ -104,7 +116,7 @@ export const Map = () => {
   }, [])
 
   return (
-    <>
+    <div ref={containerRef} className="fade-in-up">
       <div className={`mb-6 text-center ${inter.className}`}>
         <h3
           className={`text-[18px] font-medium tracking-wide mb-2 ${serif.className}`}
@@ -181,7 +193,7 @@ export const Map = () => {
           </p>
         </div>
       </div>
-    </>
+    </div>
   )
 }
 

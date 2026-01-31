@@ -88,9 +88,21 @@ export const ImageGallery = ({ baseUrl, className }: ImageGalleryProps) => {
     {},
   )
 
+  const sectionRef = React.useRef<HTMLElement>(null)
   const thumbnailsViewportRef = React.useRef<HTMLDivElement | null>(null)
   const thumbnailButtonRefs = React.useRef<Array<HTMLButtonElement | null>>([])
   const isPointerDownRef = React.useRef(false)
+
+  React.useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => entry.isIntersecting && el.classList.add('visible'),
+      { threshold: 0.2, rootMargin: '0px 0px -80px 0px' },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
 
   // Only render images near the current slide to reduce memory/paint cost.
   // (We keep the slide containers so the carousel snap points stay stable.)
@@ -183,7 +195,8 @@ export const ImageGallery = ({ baseUrl, className }: ImageGalleryProps) => {
 
   return (
     <section
-      className={cn('pt-2 pb-10', className)}
+      ref={sectionRef}
+      className={cn('slide-in-up pt-2 pb-10', className)}
       aria-labelledby="gallery-section"
     >
       <h2 id="gallery-section" className="sr-only">

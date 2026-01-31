@@ -7,11 +7,24 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion'
 import { inter, serif } from '@/app/fonts'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 const Account = () => {
+  const ref = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => entry.isIntersecting && el.classList.add('visible'),
+      { threshold: 0.2, rootMargin: '0px 0px -80px 0px' },
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section className="px-8 py-10 pb-40 text-center">
+    <section ref={ref} className="fade-in-up px-8 py-10 pb-40 text-center">
       <h3 className={`text-[17px] font-medium mb-4 ${serif.className}`}>
         마음 전하실 곳
       </h3>
