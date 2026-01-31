@@ -27,6 +27,10 @@ export const ImageGallery = ({ baseUrl, className }: ImageGalleryProps) => {
         alt: '웨딩 갤러리 이미지 22',
       },
       {
+        src: `${baseUrl}images/gallery/gallery-11.jpg`,
+        alt: '웨딩 갤러리 이미지 11',
+      },
+      {
         src: `${baseUrl}images/gallery/gallery-24.jpg`,
         alt: '웨딩 갤러리 이미지 24',
       },
@@ -41,10 +45,6 @@ export const ImageGallery = ({ baseUrl, className }: ImageGalleryProps) => {
       {
         src: `${baseUrl}images/gallery/gallery-31.jpg`,
         alt: '웨딩 갤러리 이미지 31',
-      },
-      {
-        src: `${baseUrl}images/gallery/gallery-11.jpg`,
-        alt: '웨딩 갤러리 이미지 11',
       },
       {
         src: `${baseUrl}images/gallery/gallery-12.jpg`,
@@ -196,7 +196,7 @@ export const ImageGallery = ({ baseUrl, className }: ImageGalleryProps) => {
   return (
     <section
       ref={sectionRef}
-      className={cn('slide-in-up pt-2 pb-10', className)}
+      className={cn('slide-in-up pt-2 pb-10 will-change-transform', className)}
       aria-labelledby="gallery-section"
     >
       <h2 id="gallery-section" className="sr-only">

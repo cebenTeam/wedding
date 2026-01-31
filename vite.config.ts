@@ -7,7 +7,7 @@ export default defineConfig({
   publicDir: path.resolve(__dirname, './public'),
   plugins: [react()],
   server: {
-    port: 3000,
+    port: 3001,
     host: true,
     strictPort: true,
   },
