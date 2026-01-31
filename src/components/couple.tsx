@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
+import { AnimatePresence, motion, useInView } from 'framer-motion'
 import { iconSprites } from '@/components/icon-sprites'
 
 const random = (min: number, max: number) => Math.random() * (max - min) + min
@@ -86,38 +86,58 @@ const generateParticles = (
 export const Couple = () => {
   const [particles, setParticles] = useState<Particle[]>([])
   const lastEdgeRef = useRef<string | null>(null)
+  const hasStartedRef = useRef(false)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const isInView = useInView(containerRef, { once: true, amount: 0.5 })
   const baseUrl = import.meta.env.BASE_URL
 
+  const spawnBurst = () => {
+    const { particles: newParticles, edge } = generateParticles(
+      6,
+      60,
+      lastEdgeRef.current,
+    )
+
+    lastEdgeRef.current = edge
+    setParticles((prev) => [...prev, ...newParticles])
+
+    const idsToRemove = new Set(newParticles.map((p) => p.id))
+    setTimeout(() => {
+      setParticles((current) =>
+        current.filter((p) => !idsToRemove.has(p.id)),
+      )
+    }, 1500)
+  }
+
   useEffect(() => {
+    if (!isInView || hasStartedRef.current) return
+    hasStartedRef.current = true
+
+    // 스케일 1로 되면서 바로 첫 버스트
+    spawnBurst()
+    setTimeout(spawnBurst, 600)
+
+    // 이후 interval 시작
     const interval = setInterval(() => {
-      const spawnBurst = () => {
-        const { particles: newParticles, edge } = generateParticles(
-          6,
-          60,
-          lastEdgeRef.current,
-        )
-
-        lastEdgeRef.current = edge
-        setParticles((prev) => [...prev, ...newParticles])
-
-        const idsToRemove = new Set(newParticles.map((p) => p.id))
-        setTimeout(() => {
-          setParticles((current) =>
-            current.filter((p) => !idsToRemove.has(p.id)),
-          )
-        }, 1500)
-      }
-
-      // 기존 1회 폭발 + 바로 이어서 다른 위치에서 1회 더
       spawnBurst()
       setTimeout(spawnBurst, 600)
     }, 2000)
 
     return () => clearInterval(interval)
-  }, [])
+  }, [isInView])
 
   return (
-    <div className="relative mx-auto w-[280px]" aria-hidden="true">
+    <motion.div
+      ref={containerRef}
+      className="relative mx-auto w-[280px]"
+      aria-hidden="true"
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+      transition={{
+        duration: 0.6,
+        ease: [0.25, 0.46, 0.45, 0.94],
+      }}
+    >
       <div
         className="absolute inset-0 z-20 pointer-events-none"
         aria-hidden="true"
@@ -166,6 +186,6 @@ export const Couple = () => {
         alt=""
         className="relative z-10 pointer-events-none"
       />
-    </div>
+    </motion.div>
   )
 }
