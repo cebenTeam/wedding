@@ -103,9 +103,7 @@ export const Couple = () => {
 
     const idsToRemove = new Set(newParticles.map((p) => p.id))
     setTimeout(() => {
-      setParticles((current) =>
-        current.filter((p) => !idsToRemove.has(p.id)),
-      )
+      setParticles((current) => current.filter((p) => !idsToRemove.has(p.id)))
     }, 1500)
   }
 
@@ -180,11 +178,11 @@ export const Couple = () => {
           })}
         </AnimatePresence>
       </div>
-
       <img
         src={`${baseUrl}images/couple.png`}
         alt=""
-        className="relative z-10 pointer-events-none"
+        width={240}
+        className="relative z-10 pointer-events-none mx-auto"
       />
     </motion.div>
   )
