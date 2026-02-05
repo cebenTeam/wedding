@@ -54,10 +54,10 @@ export const ImageGallery = ({ baseUrl, className }: ImageGalleryProps) => {
         src: `${baseUrl}images/gallery/gallery-13.jpg`,
         alt: '웨딩 갤러리 이미지 13',
       },
-      {
-        src: `${baseUrl}images/gallery/gallery-15.jpg`,
-        alt: '웨딩 갤러리 이미지 15',
-      },
+      // {
+      //   src: `${baseUrl}images/gallery/gallery-15.jpg`,
+      //   alt: '웨딩 갤러리 이미지 15',
+      // },
       {
         src: `${baseUrl}images/gallery/gallery-17.jpg`,
         alt: '웨딩 갤러리 이미지 17',
